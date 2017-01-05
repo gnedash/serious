@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Home Page";
+}
+@section Scripts {    
+    <script type="text/javascript" src="@Url.Content("~/Scripts/view/encryptor.js")"></script>
+}
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        @*<p>AES key: <span id="key"/></p>*@
+        <p><input id="tbInput" type="text"/></p>
+        <p><input id="tbEncrypt" readonly="readonly" type="text" /></p>
+        <p><input id="tbDecrypt" readonly="readonly" type="text" /></p>
+        <p><a id="btnSend" class="btn btn-default" href="#">Generate key</a></p>
+    </div>    
+</div>
+
+@Html.Hidden("LogOutUrl", Url.Action("LogOff", "Account"))
+@Html.Hidden("encryptUrl", Url.Action("Encrypt", "Home"))
+@Html.Hidden("decryptUrl", Url.Action("Decrypt", "Home"))
