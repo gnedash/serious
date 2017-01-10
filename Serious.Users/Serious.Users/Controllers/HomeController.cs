@@ -14,14 +14,12 @@ namespace Serious.Users.Controllers
         }
 
         public JsonResult Encrypt(string text)
-        {   
-            //string aesKey256 = @"5TGB&YHN7UJM(IK<5TGB&YHN7UJM(IK<";
-            
+        {            
             string aesKey256 = Guid.NewGuid().ToString().Replace("-", "");
             Session["Key"] = aesKey256;
 
             ICrypto cryptor = new AesEncryptor(aesKey256, Constants.AES_IV_256);
-            string result = cryptor.Encrypt(text.Replace(" ", ""));
+            string result = cryptor.Encrypt(text.Replace(" ", "___"));
 
             return Json(new
             {
@@ -38,7 +36,7 @@ namespace Serious.Users.Controllers
             Thread.Sleep(5000);
             return Json(new
             {
-                cryptedText = result
+                cryptedText = result.Replace("___", " ")
             });
         }
     }

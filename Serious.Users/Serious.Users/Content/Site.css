@@ -17,11 +17,12 @@
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
-
+input,
 select,
 textarea {
     max-width: 280px;    
 }
-input {
+.encrypt {
     width:350px;
+    max-width:350px;
 }
